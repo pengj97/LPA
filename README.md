@@ -17,7 +17,7 @@ This hub stores the code for paper *Mean Aggregator Is More Robust Than Robust A
 The main programs can be found in the following files:
 - `ByrdLab`: main codes
 - `main CSGD.py` `main CSGD-LFighter.py`, : program entry
--  `draw_decentralized_multi_fig`: directories containing the codes that draw the figures in paper
+-  `draw_fig`: directories containing the codes that draw the figures in paper
 `record`: directories containing the experiment results
 
 
