@@ -18,7 +18,6 @@ The main programs can be found in the following files:
 - `ByrdLab`: main codes
 - `main CSGD.py` `main CSGD-LFighter.py`, : program entry
 -  `draw_fig`: directories containing the codes that draw the figures in paper
-`record`: directories containing the experiment results
 
 
 ## Runing
