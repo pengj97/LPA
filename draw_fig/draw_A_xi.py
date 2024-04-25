@@ -22,14 +22,8 @@ set_cache_path(__CACHE_PATH__)
 
 def draw(task_name):
     datasets = ['mnist', 'cifar10']
-    # dataset = 'mnist'
 
     suffix_list = [
-        # ('_hetero_list', 'Heterogeneity'),
-        # ('_Bound_A', 'Norm of sample gradient under Static Label Flipping'),
-        # ('_Bound_A', 'Norm of sample gradient under Dynamic Label FLipping'),
-        # ('_Bound_A_full_batch', 'Disturbance of static label flipping'),
-        # ('_Bound_A_full_batch', 'Disturbance of dynamic label flipping'),
         ('_Bound_A', 'Disturbance of static label flipping'),
         ('_Bound_A', 'Disturbance of dynamic label flipping'),
         ('_hetero_list', 'Heterogeneity'),
@@ -42,7 +36,6 @@ def draw(task_name):
 
     pic_name = task_name +  '_A_hetero'
 
-    # fig, axes = plt.subplots(2, len(partition_names), figsize=(21, 19), sharex=True, sharey='row')
     fig, axes = plt.subplots(2, len(partition_names), figsize=(21, 14), sharex=True, sharey='row')
     axes[0][0].set_ylabel('Magnitude', fontsize=FONTSIZE)
     axes[1][0].set_ylabel('Magnitude', fontsize=FONTSIZE)
@@ -105,10 +98,6 @@ def draw_mnist(task_name):
 
 
     suffix_list = [
-        # ('_Bound_A', 'Norm of sample gradient under Static Label Flipping'),
-        # ('_Bound_A', 'Norm of sample gradient under Dynamic Label FLipping'),
-        # ('_Bound_A_full_batch', 'Disturbance of static label flipping'),
-        # ('_Bound_A_full_batch', 'Disturbance of dynamic label flipping'),
         ('_Bound_A', 'Disturbance of static label flipping'),
         ('_Bound_A', 'Disturbance of dynamic label flipping'),
         ('_hetero_list', 'Heterogeneity'),
@@ -140,17 +129,14 @@ def draw_mnist(task_name):
                 file_path = [taskname, 'Centralized_n=10_b=0', partition_names[i][0]]
             elif label == 'Disturbance of static label flipping':
                 file_name = 'CSGD_label_flipping_mean' + suffix
-                # file_path = [taskname, 'Centralized_n=10_b=1', partition_names[2][0]]
                 file_path = [taskname, 'Centralized_n=10_b=1', partition_names[i][0]]
             elif label == 'Disturbance of dynamic label flipping':
                 file_name = 'CSGD_furthest_label_flipping_mean' + suffix
-                # file_path = [taskname, 'Centralized_n=10_b=1', partition_names[2][0]]
                 file_path = [taskname, 'Centralized_n=10_b=1', partition_names[i][0]]
             record = load_file_in_cache(file_name, path_list=file_path)
             x_axis = [r*interval for r in range(rounds+1)]
             axes[i].plot(x_axis, record, '-', color=color, marker=marker, label=label, markevery=20)
     handles, labels = axes[0].get_legend_handles_labels()
-    # fig.legend(handles, labels, loc='lower center', ncol=2, fontsize=FONTSIZE)
     leg = fig.legend(handles, labels, loc='lower center', ncol=2, fontsize=FONTSIZE, markerscale=3)
     leg_lines = leg.get_lines()
     for i in range(len(leg_lines)):
