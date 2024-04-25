@@ -1,6 +1,6 @@
 import argparse
 
-parser = argparse.ArgumentParser(description='Robust Temporal Difference Learning')
+parser = argparse.ArgumentParser(description='Mean Aggregator Is More Robust Than Robust Aggregators Under Label Poisoning Attacks')
     
 # Arguments
 parser.add_argument('--graph', type=str, default='CompleteGraph')
