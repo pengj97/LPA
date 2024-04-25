@@ -27,17 +27,9 @@ def draw(task_name):
     aggregations = [
         ('mean', 'Baseline'), 
         ('mean', 'Mean'), 
-        # ('median', 'CooMed'),
-        # ('geometric_median', 'GeoMed'), 
-        # ('Krum', 'Krum'), 
         ('trimmed_mean', 'TriMean'),
-        # ('SCClip', 'SCC'),
-        # ('SCClip_T', 'SCC-T'),
         ('faba', 'FABA'), 
         ('CC', 'CC'),
-        # ('IOS', r'\textbf{IOS (ours)}'), 
-        # ('bulyan', 'Bulyan'),
-        # ('remove_outliers', 'Cutter'),
         ('LFighter', 'LFighter'),
     ]
     partition_names = [
@@ -48,9 +40,6 @@ def draw(task_name):
 
     pic_name = 'centralized_' + task_name + '_' + graph_name + '_' + attack_name
 
-    # fig, axes = plt.subplots(2, len(partition_names), figsize=(21, 13), sharex=True, sharey=True)
-    # fig, axes = plt.subplots(2, len(partition_names), figsize=(21, 13), sharex=True, sharey=True)
-    # fig, axes = plt.subplots(2, len(partition_names), figsize=(21, 19), sharex=True, sharey='row')
     fig, axes = plt.subplots(2, len(partition_names), figsize=(21, 14), sharex=True, sharey='row')
     axes[0][0].set_ylabel('Accuracy', fontsize=FONTSIZE)
     axes[1][0].set_ylabel('Accuracy', fontsize=FONTSIZE)
@@ -90,14 +79,12 @@ def draw(task_name):
                 axes[l][i].plot(x_axis, acc_path, '-', color=color, marker=marker, label=agg_show_name, markevery=20)
 
     handles, labels = axes[0][0].get_legend_handles_labels()
-    # fig.legend(handles, labels, loc='lower center', ncol=3, fontsize=FONTSIZE)
-
+    
     leg = fig.legend(handles, labels, loc='lower center', ncol=3, fontsize=FONTSIZE, markerscale=3)
     leg_lines = leg.get_lines()
     for i in range(len(leg_lines)):
         plt.setp(leg_lines[i], linewidth=5.0)
 
-    # plt.subplots_adjust(top=1, bottom=0.25, left=0, right=1, hspace=0.13, wspace=0.13)
     plt.subplots_adjust(top=1, bottom=0.33, left=0, right=1, hspace=0.18, wspace=0.13)
 
 
@@ -126,17 +113,9 @@ def draw_mnist(task_name):
     aggregations = [
         ('mean', 'Baseline'), 
         ('mean', 'Mean'), 
-        # ('median', 'CooMed'),
-        # ('geometric_median', 'GeoMed'), 
-        # ('Krum', 'Krum'), 
         ('trimmed_mean', 'TriMean'),
-        # ('SCClip', 'SCC'),
-        # ('SCClip_T', 'SCC-T'),
         ('faba', 'FABA'), 
         ('CC', 'CC'),
-        # ('IOS', r'\textbf{IOS (ours)}'), 
-        # ('bulyan', 'Bulyan'),
-        # ('remove_outliers', 'Cutter'),
         ('LFighter', 'LFighter'),
     ]
     partition_names = [
@@ -149,7 +128,6 @@ def draw_mnist(task_name):
 
     fig, axes = plt.subplots(1, len(partition_names), figsize=(21, 11), sharex=True, sharey=True)
     axes[0].set_ylabel('Accuracy', fontsize=FONTSIZE)
-    # axes[0].set_ylim(0.45, 0.96)
     axes[0].set_ylim(0.7, 0.93)
 
 
@@ -178,7 +156,6 @@ def draw_mnist(task_name):
                         for r in range(record['rounds']+1)]
             axes[i].plot(x_axis, acc_path, '-', color=color, marker=marker, label=agg_show_name, markevery=20)
     handles, labels = axes[0].get_legend_handles_labels()
-    # fig.legend(handles, labels, loc='lower center', ncol=3, fontsize=FONTSIZE)
     leg = fig.legend(handles, labels, loc='lower center', ncol=3, fontsize=FONTSIZE, markerscale=3)
     leg_lines = leg.get_lines()
     for i in range(len(leg_lines)):
