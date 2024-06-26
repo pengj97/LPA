@@ -48,8 +48,8 @@ python "main CSGD-LFighter.py"   --attack <attack-name> --data-partition <data-p
 > - lfighter
 >
 > `<attack-name>`: 
-> - label_flipping (static label flipping)
-> - furthest_label_flipping (dynamic label flipping)
+> - label_flipping (which executes static label flipping attacks)
+> - furthest_label_flipping (which executes dynamic label flipping attacks)
 
 >
 > `<data-partition>`: 
