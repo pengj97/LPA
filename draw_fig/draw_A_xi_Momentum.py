@@ -7,11 +7,6 @@ from ByrdLab.library.cache_io import load_file_in_cache, set_cache_path
 colors = [ 'green', 'red',  'orange', 'blue', 'purple'] 
 markers = ['h', '+', 'v',  '^', 'x', 'o']
 
-# colors = [ 'green', 'red',  'green', 'red'] 
-# markers = ['h', 's', 'h',  's',]
-# linestyles = ['-', '-', '--', '--']
-
-
 interval = 100
 rounds = 200
 
@@ -27,19 +22,11 @@ method = 'CMomentum'
 
 def draw(task_name):
     datasets = ['mnist', 'cifar10']
-    # dataset = 'mnist'
 
     suffix_list = [
-        # ('_hetero_list', 'Heterogeneity'),
-        # ('_Bound_A', 'Norm of sample gradient under Static Label Flipping'),
-        # ('_Bound_A', 'Norm of sample gradient under Dynamic Label FLipping'),
-        # ('_Bound_A_full_batch', 'Disturbance of static label flipping'),
-        # ('_Bound_A_full_batch', 'Disturbance of dynamic label flipping'),
         ('_Bound_A', 'Disturbance of static label flipping'),
         ('_Bound_A', 'Disturbance of dynamic label flipping'),
         ('_hetero_list', 'Heterogeneity'),
-        # ('_hetero_list', 'Heterogeneity (static label flipping)'),
-        # ('_hetero_list', 'Heterogeneity (dynamic label flipping)'),
     ]
     partition_names = [
         ('iidPartition', 'IID'),
@@ -49,14 +36,10 @@ def draw(task_name):
 
     pic_name = task_name + '_' + method + '_A_hetero'
 
-    # fig, axes = plt.subplots(2, len(partition_names), figsize=(21, 19), sharex=True, sharey='row')
-    # fig, axes = plt.subplots(2, len(partition_names), figsize=(21, 14), sharex=True, sharey='row')
     fig, axes = plt.subplots(2, len(partition_names), figsize=(26, 20), sharex=True, sharey='row')
 
     axes[0][0].set_ylabel('Magnitude', fontsize=FONTSIZE)
     axes[1][0].set_ylabel('Magnitude', fontsize=FONTSIZE)
-    # axes[0][0].set_ylim(-2, 22)
-    # axes[1][0].set_ylim(-2, 52)
     axes[0][0].set_yscale('log')
     axes[1][0].set_yscale('log')
 
@@ -74,8 +57,6 @@ def draw(task_name):
                 # linestyle = linestyles[index]
 
                 if label == 'Heterogeneity':
-                    # file_name = method + '_furthest_label_flipping_mean' + suffix
-                    # file_path = [taskname, 'Centralized_n=10_b=1', partition_names[i][0]]
                     file_path = [taskname, 'Centralized_n=10_b=1', partition_names[i][0]]
                     file_name_1 = method + '_label_flipping_mean' + suffix
                     file_name_2 = method + '_furthest_label_flipping_mean' + suffix
@@ -122,20 +103,13 @@ def draw(task_name):
 
 
 def draw_mnist(task_name):
-    # datasets = ['mnist', 'cifar10']
     dataset = 'mnist'
 
 
     suffix_list = [
-        # ('_Bound_A', 'Norm of sample gradient under Static Label Flipping'),
-        # ('_Bound_A', 'Norm of sample gradient under Dynamic Label FLipping'),
-        # ('_Bound_A_full_batch', 'Disturbance of static label flipping'),
-        # ('_Bound_A_full_batch', 'Disturbance of dynamic label flipping'),
         ('_Bound_A', 'Disturbance of static label flipping'),
         ('_Bound_A', 'Disturbance of dynamic label flipping'),
         ('_hetero_list', 'Heterogeneity'),
-        # ('_hetero_list', 'Heterogeneity (static label flipping)'),
-        # ('_hetero_list', 'Heterogeneity (dynamic label flipping)'),
     ]
     partition_names = [
         ('iidPartition', 'IID'),
@@ -145,11 +119,9 @@ def draw_mnist(task_name):
 
     pic_name = task_name + '_' + dataset + '_' + method + '_A_hetero'
 
-    # fig, axes = plt.subplots(1, len(partition_names), figsize=(21, 11), sharex=True, sharey=True)
     fig, axes = plt.subplots(1, len(partition_names), figsize=(26, 12), sharex=True, sharey=True)
 
     axes[0].set_ylabel('Magnitude', fontsize=FONTSIZE)
-    # axes[0].set_ylim(-2, 22)
     axes[0].set_yscale('log')
 
     taskname = task_name + '_' + dataset
@@ -161,7 +133,6 @@ def draw_mnist(task_name):
         for index, (suffix, label) in enumerate(suffix_list):
             color = colors[index]
             marker = markers[index]
-            # linestyle = linestyles[index]
             
             if label == 'Heterogeneity':
                 file_path = [taskname, 'Centralized_n=10_b=1', partition_names[i][0]]
@@ -170,13 +141,9 @@ def draw_mnist(task_name):
                 record_1 = load_file_in_cache(file_name_1, path_list=file_path)
                 record_2 = load_file_in_cache(file_name_2, path_list=file_path)
                 if max(record_1) >= max(record_2):
-                    file_name = file_name_2
-                else:
                     file_name = file_name_1
-                # if max(record_1) >= max(record_2):
-                #     file_name = file_name_1
-                # else:
-                #     file_name = file_name_2
+                else:
+                    file_name = file_name_2
             elif label == 'Disturbance of static label flipping':
                 file_name = method + '_label_flipping_mean' + suffix
                 file_path = [taskname, 'Centralized_n=10_b=1', partition_names[i][0]]
@@ -196,7 +163,6 @@ def draw_mnist(task_name):
         plt.setp(leg_lines[i], linewidth=5.0)
 
     plt.subplots_adjust(top=1, bottom=0.42, left=0, right=1, hspace=0.1, wspace=0.13)
-
 
     file_dir = os.path.dirname(os.path.abspath(__file__))
     dir_png_path = os.path.join(file_dir, 'pic', 'png')
