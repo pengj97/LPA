@@ -16,7 +16,9 @@ This hub stores the code for paper *Mean Aggregator Is More Robust Than Robust A
 ## Construction
 The main programs can be found in the following files:
 - `ByrdLab`: main codes
-- `main CSGD.py` `main CSGD-LFighter.py`, : program entry
+- `main CSGD(-xxx).py` `main CMomentum(-xxx).py`, : program entry
+  * `main CSGD.py` `main CSGD-LFighter` `main CMomentum.py` `main CMomentum-LFighter.py`: compute classification accuracies of different aggregators
+  * `main CSGD-`
 -  `draw_fig`: directories containing the codes that draw the figures in paper
 
 
