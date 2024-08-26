@@ -1,5 +1,5 @@
-# Mean Aggregator Is More Robust Than Robust Aggregators Under Label Poisoning Attacks
-This hub stores the code for paper *Mean Aggregator Is More Robust Than Robust Aggregators Under Label Poisoning Attacks*.
+# Mean Aggregator Is More Robust Than Robust Aggregators Under Label Poisoning Attacks on Distributed Heterogeneous Data
+This hub stores the code for paper *Mean Aggregator Is More Robust Than Robust Aggregators Under Label Poisoning Attacks on Distributed Heterogeneous Data*.
 
 ## Install
 1. Download the dependant packages (c.f. `install.sh`):
@@ -16,27 +16,29 @@ This hub stores the code for paper *Mean Aggregator Is More Robust Than Robust A
 ## Construction
 The main programs can be found in the following files:
 - `ByrdLab`: main codes
-- `main CSGD(-xxx).py` `main CMomentum(-xxx).py`, : program entry
-  * `main CSGD.py` `main CSGD-LFighter` `main CMomentum.py` `main CMomentum-LFighter.py`: compute classification accuracies of different aggregators
-  * `main CSGD-`
+- `main CMomentum(-xxx).py`, : program entry
+  * `main CMomentum.py` `main CMomentum-LFighter.py`: compute classification accuracies of different aggregators (Fig. 1, 2, 4, 5)
+  * `main CMomentum-hetero-bound.py`: compute heterogeneity of regular gradients and disturbances of poisoned gradients (Fig. 3, 6)
+  * `main CMomentum-A-xi-NN.py`: compute classification accuracies of different aggregators under different data distributions and attack strengths (Fig. 7)
+  * `main CMomentum-variance.py`: compute variance of regular and poisoned stochastic gradients (Fig. 8)
 -  `draw_fig`: directories containing the codes that draw the figures in paper
 
 
 ## Runing
-### Run CSGD
+### Run CMomentum
 ```bash
-python "main CSGD.py"  --aggregation <aggregation-name> --attack <attack-name> --data-partition <data-partition>
+python "main CMomentum.py"  --aggregation <aggregation-name> --attack <attack-name> --data-partition <data-partition>
 # ========================
 # e.g.
-# python "main CSGD.py" --aggregation trimmed-mean --attack label_flipping --data-partition noniid
+# python "main CMomentum.py" --aggregation trimmed-mean --attack label_flipping --data-partition noniid
 ```
 
-### Run CSGD-LFighter
+### Run CMomentum-LFighter
 ```bash
-python "main CSGD-LFighter.py"   --attack <attack-name> --data-partition <data-partition>
+python "main CMomentum-LFighter.py"   --attack <attack-name> --data-partition <data-partition>
 # ========================
 # e.g.
-# python "main CSGD-LFighter.py" --attack label_flipping --data-partition noniid
+# python "main CMomentum-LFighter.py" --attack label_flipping --data-partition noniid
 ```
 
 > The arguments can be
