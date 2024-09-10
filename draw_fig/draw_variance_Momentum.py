@@ -44,8 +44,6 @@ def draw_mnist(task_name):
     axes[0].set_ylabel('Magnitude', fontsize=FONTSIZE)
     axes[0].set_ylim(50, 2000)
     axes[0].set_yscale('log')
-    # axes[0].tick_params(axis='y', labelsize=80)
-
 
     taskname = task_name + '_' + dataset
     for i in range(len(partition_names)):
@@ -64,11 +62,8 @@ def draw_mnist(task_name):
             y_axis = record
             x_axis = [r*interval for r in range(rounds+1)]
             axes[i].plot(x_axis, y_axis, '-', color=color, marker=marker, label=label, markevery=20, linewidth=4, markersize=20)
-            # axes[i].plot(x_axis, record, linestyle=linestyle, color=color, marker=marker, label=label, markevery=20)
 
     handles, labels = axes[0].get_legend_handles_labels()
-    # fig.legend(handles, labels, loc='lower center', ncol=2, fontsize=FONTSIZE)
-    # leg = fig.legend(handles, labels, loc='lower center', ncol=2, fontsize=FONTSIZE, markerscale=4)
     leg = fig.legend(handles, labels, loc='lower center', ncol=2, fontsize=FONTSIZE, markerscale=2)
 
     leg_lines = leg.get_lines()
@@ -76,7 +71,6 @@ def draw_mnist(task_name):
         plt.setp(leg_lines[i], linewidth=5.0)
 
     plt.subplots_adjust(top=1, bottom=0.344, left=0, right=1, hspace=0.1, wspace=0.13)
-
 
     file_dir = os.path.dirname(os.path.abspath(__file__))
     dir_png_path = os.path.join(file_dir, 'pic', 'png')
