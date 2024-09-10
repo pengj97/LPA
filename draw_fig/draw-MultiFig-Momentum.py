@@ -27,17 +27,9 @@ def draw(task_name):
     aggregations = [
         ('mean', 'Baseline'), 
         ('mean', 'Mean'), 
-        # ('median', 'CooMed'),
-        # ('geometric_median', 'GeoMed'), 
-        # ('Krum', 'Krum'), 
         ('trimmed_mean', 'TriMean'),
-        # ('SCClip', 'SCC'),
-        # ('SCClip_T', 'SCC-T'),
         ('faba', 'FABA'), 
         ('CC', 'CC'),
-        # ('IOS', r'\textbf{IOS (ours)}'), 
-        # ('bulyan', 'Bulyan'),
-        # ('remove_outliers', 'Cutter'),
         ('LFighter', 'LFighter'),
     ]
     partition_names = [
@@ -48,16 +40,11 @@ def draw(task_name):
 
     pic_name = 'centralized_' + task_name + '_' + graph_name + '_' + method + '_' + attack_name
 
-    # fig, axes = plt.subplots(2, len(partition_names), figsize=(21, 13), sharex=True, sharey=True)
-    # fig, axes = plt.subplots(2, len(partition_names), figsize=(21, 13), sharex=True, sharey=True)
     fig, axes = plt.subplots(2, len(partition_names), figsize=(26, 19), sharex=True, sharey='row')
-    # fig, axes = plt.subplots(2, len(partition_names), figsize=(21, 14), sharex=True, sharey='row')
 
     axes[0][0].set_ylabel('Accuracy', fontsize=FONTSIZE)
     axes[1][0].set_ylabel('Accuracy', fontsize=FONTSIZE)
     axes[0][0].set_ylim(0.4, 0.98)
-    # axes[0][0].set_ylim(0.45, 0.98)
-    # axes[1][0].set_ylim(0.2, 0.7)
 
     
 
@@ -128,17 +115,9 @@ def draw_mnist(task_name):
     aggregations = [
         ('mean', 'Baseline'), 
         ('mean', 'Mean'), 
-        # ('median', 'CooMed'),
-        # ('geometric_median', 'GeoMed'), 
-        # ('Krum', 'Krum'), 
         ('trimmed_mean', 'TriMean'),
-        # ('SCClip', 'SCC'),
-        # ('SCClip_T', 'SCC-T'),
         ('faba', 'FABA'), 
         ('CC', 'CC'),
-        # ('IOS', r'\textbf{IOS (ours)}'), 
-        # ('bulyan', 'Bulyan'),
-        # ('remove_outliers', 'Cutter'),
         ('LFighter', 'LFighter'),
     ]
     partition_names = [
@@ -151,7 +130,6 @@ def draw_mnist(task_name):
 
     fig, axes = plt.subplots(1, len(partition_names), figsize=(26, 11), sharex=True, sharey=True)
     axes[0].set_ylabel('Accuracy', fontsize=FONTSIZE)
-    # axes[0].set_ylim(0.45, 0.96)
     axes[0].set_ylim(0.6, 0.93)
 
 
