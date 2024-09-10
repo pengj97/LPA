@@ -69,9 +69,9 @@ python "main CMomentum-LFighter.py"   --attack <attack-name> --data-partition <d
 ```
 cd draw_fig
 
-python draw.py 
+python draw-MultiFig-Momentum.py 
 
-python draw_A_xi.py
+python draw_A_xi_Momentum.py
 
-python draw_alpha_prob.py
+python draw_alpha_prob_Momentum.py
 ```
