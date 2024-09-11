@@ -18,7 +18,7 @@ from ByrdLab.tasks.neuralNetwork import NeuralNetworkTask
 
 
 
-node_size = 10
+node_size = 9
 byzantine_size = 1
 
 all_nodes = list(range(node_size))
