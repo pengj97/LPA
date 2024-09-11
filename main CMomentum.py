@@ -17,7 +17,7 @@ from ByrdLab.tasks.softmaxRegression import softmaxRegressionTask
 from ByrdLab.tasks.leastSquare import LeastSquareToySet, LeastSquareToyTask
 from ByrdLab.tasks.neuralNetwork import NeuralNetworkTask
 
-node_size = 9
+node_size = 10
 byzantine_size = 1
 
 all_nodes = list(range(node_size))
