@@ -33,14 +33,6 @@ python "main CMomentum.py"  --aggregation <aggregation-name> --attack <attack-na
 # python "main CMomentum.py" --aggregation trimmed-mean --attack label_flipping --data-partition noniid
 ```
 
-### Run CMomentum-LFighter
-```bash
-python "main CMomentum-LFighter.py"   --attack <attack-name> --data-partition <data-partition>
-# ========================
-# e.g.
-# python "main CMomentum-LFighter.py" --attack label_flipping --data-partition noniid
-```
-
 > The arguments can be
 >
 >
