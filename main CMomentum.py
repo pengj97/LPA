@@ -45,7 +45,7 @@ args.lr_ctrl = 'constant'
 # dataset = ToySet(set_size=500, dimension=5, fix_seed=True)
 
 data_package = mnist()
-task = softmaxRegressionTask(data_package, batch_size=1)
+task = softmaxRegressionTask(data_package, batch_size=32)
 
 # data_package = fashionmnist()
 # task = softmaxRegressionTask(data_package)
@@ -54,7 +54,7 @@ task = softmaxRegressionTask(data_package, batch_size=1)
 # task = NeuralNetworkTask(data_package, batch_size=32)
 
 # data_package = mnist()
-# task = NeuralNetworkTask(data_package, batch_size=1)
+# task = NeuralNetworkTask(data_package, batch_size=32)
 
 # w_star = torch.tensor([1], dtype=FEATURE_TYPE)
 # data_package = LeastSquareToySet(set_size=2000, dimension=1, w_star=w_star, noise=0, fix_seed=True)
