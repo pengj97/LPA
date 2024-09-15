@@ -1,7 +1,7 @@
 # Mean Aggregator Is More Robust Than Robust Aggregators Under Label Poisoning Attacks on Distributed Heterogeneous Data
 This hub stores the code for paper *Mean Aggregator Is More Robust Than Robust Aggregators Under Label Poisoning Attacks on Distributed Heterogeneous Data*.
 
-For the tutorial related to the paper Mean Aggregator Is More Robust Than Robust Aggregators Under Label Poisoning Attacks, please refer to the `README_IJCAI.md` file.
+For the tutorial related to the paper *Mean Aggregator Is More Robust Than Robust Aggregators Under Label Poisoning Attacks*, please refer to the `README_IJCAI.md` file.
 ## Install
 1. Download the dependant packages (c.f. `install.sh`):
 - python 3.8.10
