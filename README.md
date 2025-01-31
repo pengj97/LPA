@@ -3,7 +3,7 @@ This hub stores the code for paper *Mean Aggregator Is More Robust Than Robust A
 
 For the tutorial related to the paper *Mean Aggregator Is More Robust Than Robust Aggregators Under Label Poisoning Attacks*, please refer to the `README_IJCAI.md` file.
 ## Install
-1. Download the dependant packages (c.f. `install.sh`):
+1. Download the dependant packages:
 - python 3.8.10
 - pytorch 1.9.0
 - matplotlib 3.3.4
@@ -18,7 +18,7 @@ For the tutorial related to the paper *Mean Aggregator Is More Robust Than Robus
 The main programs can be found in the following files:
 - `ByrdLab`: main codes
 - `main CMomentum(-xxx).py`, : program entry
-  * `main CMomentum.py` `main CMomentum-LFighter.py`: compute classification accuracies of different aggregators (Fig. 1, 2, 4, 5)
+  * `main CMomentum.py`: compute classification accuracies of different aggregators (Fig. 1, 2, 4, 5)
   * `main CMomentum-hetero-bound.py`: compute heterogeneity of regular gradients and disturbances of poisoned gradients (Fig. 3, 6)
   * `main CMomentum-A-xi-NN.py`: compute classification accuracies of different aggregators under different data distributions and attack strengths (Fig. 7)
   * `main CMomentum-variance.py`: compute variance of regular and poisoned stochastic gradients (Fig. 8)
