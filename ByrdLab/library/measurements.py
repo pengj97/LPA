@@ -54,45 +54,6 @@ def avg_loss_accuracy(model, get_test_iter, loss_fn, weight_decay):
     return loss_avg, accuracy_avg
 
 @torch.no_grad()
-def binary_classification_accuracy(predictions, targets):
-    prediction_cls = (predictions > 0.5).type(TARGET_TYPE)
-    accuracy = (prediction_cls == targets).sum()
-    return accuracy
-
-# @torch.no_grad()
-# def multi_classification_accuracy(predictions, targets):
-#     _, prediction_cls = torch.max(predictions, dim=1)
-#     accuracy = (prediction_cls == targets).sum()
-#     return accuracy
-
-@torch.no_grad()
-def multi_classification_accuracy(predictions, targets, num_classes=10):
-    _, prediction_cls = torch.max(predictions, dim=1)
-    targets = torch.Tensor.cpu(targets)
-    prediction_cls = torch.Tensor.cpu(prediction_cls)
-
-    # # 计算混淆矩阵
-    # confusion = confusion_matrix(targets, prediction_cls, labels=range(num_classes))
-
-    # # 初始化一个字典来存储每一类的准确率
-    # class_accuracies = {}
-
-    # # 计算每一类的准确率
-    # for i in range(num_classes):
-    #     correct = confusion[i, i]
-    #     total = confusion[i, :].sum()
-    #     accuracy = correct / total if total > 0 else 0
-    #     class_accuracies[f'Class_{i}'] = accuracy
-
-    # print('-------------------------------------------')
-    # for class_label, accuracy in class_accuracies.items():
-    #     print(f'{class_label} Accuracy: {accuracy:.2f}')
-    # print('-------------------------------------------')
-
-    accuracy = (prediction_cls == targets).sum()
-    return accuracy
-
-@torch.no_grad()
 def avg_loss_accuracy_dist(dist_models, get_test_iter,
                            loss_fn, test_fn, weight_decay,
                            node_list=None):
