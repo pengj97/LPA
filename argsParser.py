@@ -1,9 +1,8 @@
 import argparse
 
-parser = argparse.ArgumentParser(description='Mean Aggregator Is More Robust Than Robust Aggregators Under Label Poisoning Attacks')
+parser = argparse.ArgumentParser(description='Mean Aggregator Is More Robust Than Robust Aggregators Under Label Poisoning Attacks on Distributed Heterogeneous Data')
     
 # Arguments
-parser.add_argument('--graph', type=str, default='CompleteGraph')
 parser.add_argument('--aggregation', type=str, default='mean')
 parser.add_argument('--attack', type=str, default='none')
 parser.add_argument('--data-partition', type=str, default='iid')
