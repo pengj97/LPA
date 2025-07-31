@@ -24,15 +24,8 @@ all_nodes = list(range(node_size))
 honest_nodes = list(range(node_size - byzantine_size))
 byzantine_nodes = [node for node in all_nodes if node not in honest_nodes]
 
-# args.graph = 'CompleteGraph'
-# args.attack = 'furthest_label_flipping'
-# args.attack = 'label_flipping'
-# args.lr_ctrl = '1/sqrt k'
+
 args.lr_ctrl = 'constant'
-# args.lr_ctrl = 'ladder'
-# args.data_partition = 'dirichlet_mild'
-# args.data_partition = 'iid'
-# args.aggregation = 'lfighter' 
 
 # run for centralized algorithm
 # ===========================================
@@ -40,27 +33,10 @@ args.lr_ctrl = 'constant'
 # -------------------------------------------
 # define learning task
 # -------------------------------------------
-# data_package = ijcnn()
-# task = LogisticRegressionTask(data_package)
-
-# dataset = ToySet(set_size=500, dimension=5, fix_seed=True)
-
-# data_package = mnist()
-# task = softmaxRegressionTask(data_package, batch_size=32)
-
-# data_package = fashionmnist()
-# task = softmaxRegressionTask(data_package)
-
-# data_package = cifar10()
-# task = NeuralNetworkTask(data_package, batch_size=32)
 
 data_package = mnist()
 task = NeuralNetworkTask(data_package, batch_size=1)
 
-# w_star = torch.tensor([1], dtype=FEATURE_TYPE)
-# data_package = LeastSquareToySet(set_size=2000, dimension=1, w_star=w_star, noise=0, fix_seed=True)
-# data_package = LeastSquareToySet(set_size=100, dimension=1, noise=0, fix_seed=True)
-# task = LeastSquareToyTask(data_package)
 # ===========================================
 
 # -------------------------------------------
@@ -68,56 +44,12 @@ task = NeuralNetworkTask(data_package, batch_size=1)
 # -------------------------------------------
 if args.attack == 'none':
     attack = None
-elif args.attack == 'gaussian':
-    attack = C_gaussian(honest_nodes, byzantine_nodes)
-elif args.attack == 'same_value':
-    attack = C_same_value(honest_nodes, byzantine_nodes)
-elif args.attack == 'sign_flipping':
-    attack = C_sign_flipping(honest_nodes, byzantine_nodes)
 elif args.attack == 'label_flipping':
     attack = label_flipping()
 elif args.attack == 'label_random':
     attack = label_random()
-elif args.attack == 'feature_label_random':
-    attack = feature_label_random()
 elif args.attack == 'furthest_label_flipping':
     attack = furthest_label_flipping()
-elif args.attack == 'adversarial_label_flipping_iid':
-    attack = adversarial_label_flipping()
-
-    path = ['SR_mnist', 'Complete_n=1_b=0', 'TrivalPartition', 'best']
-    q = load_file_in_cache('q-end', path_list=path)
-    data_size = len(data_package.train_set)
-    num_classes = data_package.num_classes
-    len_q = num_classes * data_size
-    assert len(q) == len_q
-
-    for i in range(len_q):
-        if q[i] == 1:
-            k = i // data_size
-            index = i % data_size
-            task.data_package.train_set.targets[index] = (task.data_package.train_set.targets[index] + k) % num_classes
-
-elif args.attack == 'adversarial_label_flipping_noniid':
-    attack = adversarial_label_flipping()
-    data_package = mnist_sorted_by_labels()
-    task = softmaxRegressionTask(data_package)
-    partition_cls = LabelSeperation
-
-    path = ['SR_mnist', 'Complete_n=1_b=0', 'LabelSeperation', 'best']
-    q = load_file_in_cache('q-end', path_list=path)
-    ratio = byzantine_size / node_size
-    flipped_data_size = int(ratio * len(data_package.train_set))
-    num_classes = data_package.num_classes
-    len_q = num_classes * flipped_data_size
-    assert len(q) == len_q
-
-    for i in range(len_q):
-        if q[i] == 1:
-            k = i // flipped_data_size
-            index = i % flipped_data_size
-            task.data_package.train_set.targets[index] = (task.data_package.train_set.targets[index] + k) % num_classes
-
 if args.attack == 'none':
     attack_name = 'baseline'
     byzantine_size = 0
@@ -190,22 +122,8 @@ if args.aggregation == 'mean':
     aggregation = C_mean(honest_nodes, byzantine_nodes)
 elif args.aggregation == 'trimmed-mean':
     aggregation = C_trimmed_mean(honest_nodes, byzantine_nodes)
-# elif args.aggregation == 'median':
-#     aggregation = D_median(graph)
-# elif args.aggregation == 'geometric-median':
-#     aggregation = D_geometric_median(graph)
 elif args.aggregation == 'faba':
     aggregation = C_faba(honest_nodes, byzantine_nodes)
-# elif args.aggregation == 'remove-outliers':
-#     aggregation = D_remove_outliers(graph)
-# elif args.aggregation == 'mKrum':
-#     aggregation = D_mKrum(graph)
-# elif args.aggregation == 'Krum':
-#     aggregation = D_Krum(graph)
-# elif args.aggregation == 'bulyan':
-#     aggregation = D_bulyan(graph)
-# elif args.aggregation == 'brute':
-#     aggregation = D_brute(graph)
 elif args.aggregation == 'cc':
     if args.data_partition == 'iid':
         threshold = 0.1
