@@ -16,7 +16,7 @@ This README document is for our paper *Mean Aggregator Is More Robust Than Robus
 ## Construction
 The main programs can be found in the following files:
 - `ByrdLab`: main codes
-- `main CSGD.py` `main CSGD-LFighter.py`, : program entry
+- `main CSGD.py` `main CSGD-A-xi-NN.py`, : program entry
 -  `draw_fig`: directories containing the codes that draw the figures in paper
 
 
@@ -27,14 +27,6 @@ python "main CSGD.py"  --aggregation <aggregation-name> --attack <attack-name> -
 # ========================
 # e.g.
 # python "main CSGD.py" --aggregation trimmed-mean --attack label_flipping --data-partition noniid
-```
-
-### Run CSGD-LFighter
-```bash
-python "main CSGD-LFighter.py"   --attack <attack-name> --data-partition <data-partition>
-# ========================
-# e.g.
-# python "main CSGD-LFighter.py" --attack label_flipping --data-partition noniid
 ```
 
 > The arguments can be
