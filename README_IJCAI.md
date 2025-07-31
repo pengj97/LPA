@@ -2,7 +2,7 @@
 This README document is for our paper *Mean Aggregator Is More Robust Than Robust Aggregators Under Label Poisoning Attacks* published in IJCAI 2024.
 
 ## Install
-1. Download the dependant packages (c.f. `install.sh`):
+1. Download the dependant packages:
 - python 3.8.10
 - pytorch 1.9.0
 - matplotlib 3.3.4
